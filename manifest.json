@@ -1,0 +1,34 @@
+{
+    "manifest_version": 3,
+    "name": "Black Screen Toggle",
+    "version": "0.0.0",
+    "description": "Toggles a black screen ON/OFF and hides current tab content.",
+    "author": "Sin Studios",
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "host_permissions": [
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>",
+                "chrome://*/*"
+            ],
+            "js": ["blackscreen.js"],
+            "run_at": "document_idle"
+        }
+    ],
+    "action": {
+        "default_title": "Click to toggle a Black Screen"
+    },
+    "icons": {
+        "16": "icons/square-16.png",
+        "64": "icons/square-64.png",
+        "128": "icons/square-128.png"
+    }
+}
