@@ -43,7 +43,7 @@ function ON() {
     titleContent = title.innerText;
     title.innerText = "Blank Page";
 
-    linkpic = [...document.querySelectorAll('link[rel="icon"]'), ...document.querySelectorAll('link[rel="shortcut icon"]')];
+    linkpic = [...document.querySelectorAll('link[rel~="icon"]')];
     linkpic.forEach((e) => {
         document.head.removeChild(e);
     });
