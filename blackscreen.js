@@ -35,6 +35,7 @@ function getMaxZIndex() {
 
 function ON() {
     blackScreen.style.display = "block";
+    title = document.getElementsByTagName("title")[0];
     titleContent = title.innerText;
     title.innerText = "Blank Page";
 }
