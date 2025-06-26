@@ -38,6 +38,7 @@ function getMaxZIndex() {
 }
 
 function ON() {
+    blackScreen.style.zIndex = getMaxZIndex() + 1;
     blackScreen.style.display = "block";
     title = document.getElementsByTagName("title")[0];
     titleContent = title.innerText;
