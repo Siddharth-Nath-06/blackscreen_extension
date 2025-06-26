@@ -20,6 +20,10 @@ blackScreen.style.zIndex = getMaxZIndex() + 1;
 root.appendChild(blackScreen);
 var title = document.getElementsByTagName("title")[0];
 var titleContent = '';
+var linkpic;
+var linkparent = document.createElement("div");
+linkparent.innerHTML = `<link rel="shortcut icon" href="icons/square-128.png" type="image/x-icon">`
+var link = linkparent.firstChild;
 
 function getMaxZIndex() {
     let maxZ = 0;
@@ -38,9 +42,19 @@ function ON() {
     title = document.getElementsByTagName("title")[0];
     titleContent = title.innerText;
     title.innerText = "Blank Page";
+
+    linkpic = [...document.querySelectorAll('link[rel="icon"]'), ...document.querySelectorAll('link[rel="shortcut icon"]')];
+    linkpic.forEach((e) => {
+        document.head.removeChild(e);
+    });
+    document.head.appendChild(link);
 }
 
 function OFF() {
     blackScreen.style.display = "none";
     title.innerText = titleContent;
+    document.head.removeChild(link);
+    linkpic.forEach((e) => {
+        document.head.appendChild(e);
+    });
 }
