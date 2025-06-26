@@ -18,6 +18,8 @@ blackScreen.style.top = "0px";
 blackScreen.style.left = "0px";
 blackScreen.style.zIndex = getMaxZIndex() + 1;
 root.appendChild(blackScreen);
+var title = document.getElementsByTagName("title")[0];
+var titleContent = '';
 
 function getMaxZIndex() {
     let maxZ = 0;
@@ -33,8 +35,11 @@ function getMaxZIndex() {
 
 function ON() {
     blackScreen.style.display = "block";
+    titleContent = title.innerText;
+    title.innerText = "Blank Page";
 }
 
 function OFF() {
     blackScreen.style.display = "none";
+    title.innerText = titleContent;
 }
