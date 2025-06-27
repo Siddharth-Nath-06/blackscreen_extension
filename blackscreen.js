@@ -7,6 +7,7 @@ try {
     console.error("Error in message listener:", error);
 }
 
+// #region variable declarations and element settings
 var root = document.getElementsByTagName("html")[0];
 var blackScreen = document.createElement("div");
 blackScreen.style.height = "100vh";
@@ -24,6 +25,7 @@ var linkpic;
 var linkparent = document.createElement("div");
 linkparent.innerHTML = `<link rel="shortcut icon" href="icons/square-128.png" type="image/x-icon">`
 var link = linkparent.firstChild;
+// #endregion
 
 function getMaxZIndex() {
     let maxZ = 0;
