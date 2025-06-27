@@ -49,6 +49,11 @@ function ON() {
         document.head.removeChild(e);
     });
     document.head.appendChild(link);
+    checkfullscreentoggle().then((e) => {
+        if (e) {
+            blackScreen.requestFullscreen();
+        }
+    })
 }
 
 function OFF() {
@@ -57,5 +62,18 @@ function OFF() {
     document.head.removeChild(link);
     linkpic.forEach((e) => {
         document.head.appendChild(e);
+    });
+}
+
+
+async function checkfullscreentoggle() {
+    return new Promise((resolve, reject) => {
+        chrome.runtime.sendMessage({ action: "checkfullscreen" }, (response) => {
+            if (chrome.runtime.lastError) {
+                reject(chrome.runtime.lastError);
+            } else {
+                resolve(response);
+            }
+        });
     });
 }
