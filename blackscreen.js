@@ -18,8 +18,8 @@ blackScreen.style.top = "0px";
 blackScreen.style.left = "0px";
 blackScreen.style.zIndex = getMaxZIndex() + 1;
 root.appendChild(blackScreen);
-var title = document.getElementsByTagName("title")[0];
-var titleContent = '';
+var title = document.querySelector('title');
+var titleContent = document.title;
 var linkpic;
 var linkparent = document.createElement("div");
 linkparent.innerHTML = `<link rel="shortcut icon" href="icons/square-128.png" type="image/x-icon">`
@@ -40,9 +40,8 @@ function getMaxZIndex() {
 function ON() {
     blackScreen.style.zIndex = getMaxZIndex() + 1;
     blackScreen.style.display = "block";
-    title = document.getElementsByTagName("title")[0];
-    titleContent = title.innerText;
-    title.innerText = "Blank Page";
+    titleContent = (titleContent!==title.textContent && title.textContent!=='')?title.textContent:((titleContent!==document.title && document.title!=='')?document.title:titleContent);
+    document.title = "Blank Page";
 
     linkpic = [...document.querySelectorAll('link[rel~="icon"]')];
     linkpic.forEach((e) => {
@@ -58,7 +57,7 @@ function ON() {
 
 function OFF() {
     blackScreen.style.display = "none";
-    title.innerText = titleContent;
+    document.title = titleContent;
     document.head.removeChild(link);
     linkpic.forEach((e) => {
         document.head.appendChild(e);
