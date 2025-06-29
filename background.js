@@ -1,12 +1,5 @@
 var fullscreenOn = false;
 
-chrome.action.setBadgeText(
-    {
-        text: "OFF"
-    },
-    () => { }
-);
-
 chrome.action.onClicked.addListener((tab) => {
     let tabId = tab.id;
 
@@ -73,7 +66,20 @@ chrome.runtime.onInstalled.addListener(() => {
         checked: false,
         type: "checkbox"
     });
+    badgesetoff();
 });
+
+chrome.runtime.onStartup.addListener(() => { badgesetoff() });
+
+chrome.tabs.onCreated.addListener((tab) => { badgesetoff() });
+
+function badgesetoff() {
+    chrome.action.setBadgeText(
+        {
+            text: "OFF"
+        }
+    );
+}
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === 'checkfullscreen') {
