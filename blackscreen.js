@@ -38,10 +38,7 @@ function getMaxZIndex() {
     return maxZ;
 }
 
-function ON() {
-    blackScreen.style.zIndex = getMaxZIndex() + 1;
-    blackScreen.style.display = "block";
-
+window.onload = () => {
     const observer = new MutationObserver(() => {
         if (document.title !== 'Blank Page') {
             titleContent = document.title;
@@ -51,6 +48,11 @@ function ON() {
     if (titleEl) {
         observer.observe(titleEl, { childList: true });
     }
+}
+
+function ON() {
+    blackScreen.style.zIndex = getMaxZIndex() + 1;
+    blackScreen.style.display = "block";
 
     document.title = 'Blank Page';
 
