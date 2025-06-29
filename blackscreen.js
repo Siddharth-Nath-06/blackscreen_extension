@@ -22,7 +22,8 @@ root.appendChild(blackScreen);
 var titleContent = document.title;
 var linkpic;
 var linkparent = document.createElement("div");
-linkparent.innerHTML = `<link rel="shortcut icon" href="icons/square-128.png" type="image/x-icon">`
+var linkhref = chrome.runtime.getURL('icons/square-16.ico');
+linkparent.innerHTML = `<link rel="shortcut icon" href="` + linkhref + `" type="image/x-icon">`
 var link = linkparent.firstChild;
 // #endregion
 
