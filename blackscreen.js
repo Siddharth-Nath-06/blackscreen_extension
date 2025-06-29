@@ -19,7 +19,6 @@ blackScreen.style.top = "0px";
 blackScreen.style.left = "0px";
 blackScreen.style.zIndex = getMaxZIndex() + 1;
 root.appendChild(blackScreen);
-var title = document.querySelector('title');
 var titleContent = document.title;
 var linkpic;
 var linkparent = document.createElement("div");
@@ -42,8 +41,18 @@ function getMaxZIndex() {
 function ON() {
     blackScreen.style.zIndex = getMaxZIndex() + 1;
     blackScreen.style.display = "block";
-    titleContent = (titleContent!==title.textContent && title.textContent!=='')?title.textContent:((titleContent!==document.title && document.title!=='')?document.title:titleContent);
-    document.title = "Blank Page";
+
+    const observer = new MutationObserver(() => {
+        if (document.title !== 'Blank Page') {
+            titleContent = document.title;
+        }
+    });
+    const titleEl = document.querySelector('title');
+    if (titleEl) {
+        observer.observe(titleEl, { childList: true });
+    }
+
+    document.title = 'Blank Page';
 
     linkpic = [...document.querySelectorAll('link[rel~="icon"]')];
     linkpic.forEach((e) => {
@@ -59,7 +68,8 @@ function ON() {
 
 function OFF() {
     blackScreen.style.display = "none";
-    document.title = titleContent;
+    let title = document.getElementsByTagName('title')[0];
+    title.textContent = titleContent;
     document.head.removeChild(link);
     linkpic.forEach((e) => {
         document.head.appendChild(e);
