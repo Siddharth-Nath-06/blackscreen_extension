@@ -17,6 +17,10 @@
 4. Click **Load unpacked** and select the folder containing this repo.
 5. Done! You’ll now see the extension icon in your toolbar.
 
+```
+⚠️ For Black Screen Support on the Chrome:// URL tabs, e.g. New Tab, Settings Tab, Extensions Tab, etc, please enable the flag "#extensions-on-chrome-urls" from "chrome://flags"
+```
+
 ## 🛠️ Usage
 
 - Click the extension icon once to activate the blackout.

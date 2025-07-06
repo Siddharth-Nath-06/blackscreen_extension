@@ -17,8 +17,7 @@
     "content_scripts": [
         {
             "matches": [
-                "<all_urls>",
-                "chrome://*/*"
+                "<all_urls>"
             ],
             "js": ["blackscreen.js"],
             "run_at": "document_idle"
